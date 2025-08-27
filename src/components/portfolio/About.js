@@ -109,10 +109,6 @@ const About = () => {
               </div>
             </Card>
           </div>
-
-
-
-
         </div>
       </div>
     </section>

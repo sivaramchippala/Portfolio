@@ -17,7 +17,7 @@ const Skills = () => {
     },
     {
       title: "Cloud & DevOps",
-      skills: ["AWS Lambda", "AWS S3", "AWS Cognito", "DynamoDB", "IAM Roles", "API Gateway", "CloudWatch", "EventBridge"],
+      skills: ["AWS Lambda", "AWS S3", "AWS Cognito", "DynamoDB", "IAM Roles", "API Gateway", "CloudWatch", "EventBridge","AWS Connect"],
       color: "bg-orange-400/20 text-orange-400 border-orange-400/30"
     },
     {

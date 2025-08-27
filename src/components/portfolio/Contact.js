@@ -26,7 +26,7 @@ const Contact = () => {
       icon: <MapPin className="h-6 w-6" />,
       label: "Location",
       value: "Guntur, Andhra Pradesh, India",
-      href: "#",
+      href: "https://maps.app.goo.gl/2u3eFPecF3xtZbg67",
       color: "orange-400"
     },
     {
@@ -240,8 +240,9 @@ const Contact = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
+                variant="outline"
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold glow-effect"
+                className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
                 asChild
               >
                 <a href="mailto:chippalasivaram418@gmail.com">
@@ -268,7 +269,7 @@ const Contact = () => {
       {/* Footer */}
       <footer className="mt-20 pt-8 border-t border-border text-center">
         <p className="text-muted-foreground">
-          © 2024 Sivaram Chippala. Built with React, JavaScript, and Tailwind CSS.
+          © {new Date().getFullYear()} <span className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">Sivaram Chippala</span>. Built with React, JavaScript, and Tailwind CSS.
         </p>
       </footer>
     </section>

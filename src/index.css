@@ -53,6 +53,28 @@
   }
 }
 
+/* Small screens >= 640px */
+@media (min-width: 640px) {
+    .custom-image {
+        margin-right: 1.5rem; /* sm:mr-6 */
+    }
+}
+
+/* Medium screens >= 768px */
+@media (min-width: 768px) {
+    .custom-image {
+        margin-right: 2rem; /* md:mr-8 */
+    }
+}
+
+/* Large screens >= 1024px */
+@media (min-width: 1024px) {
+    .custom-image {
+        margin-right: 7rem; /* lg:mr-12 */
+    }
+}
+
+
 @layer base {
   * {
     @apply border-border;
