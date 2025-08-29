@@ -1,12 +1,17 @@
-
+import React, { useState } from "react";
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { Textarea } from "../ui/Textarea";
 import emailjs from "emailjs-com";
+import { useToast } from "../ui/CustomToast";
+
 
 const Contact = () => {
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const { showToast } = useToast();
   const contactInfo = [
     {
       icon: <Mail className="h-6 w-6" />,
@@ -50,28 +55,42 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSending(true);
+    setIsSent(false);
 
     const form = e.target;
+    const name = form.user_name.value.trim();
+    const email = form.user_email.value.trim();
+    const subject = form.subject.value.trim();
+    const message = form.message.value.trim();
 
+    // 🛑 Validation check
+    if (!name || !email || !subject || !message) {
+      setIsSending(false);
+      showToast("⚠️ Please fill in all fields", "error");
+      return;
+    }
     emailjs
       .sendForm(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,     // 🔹 Replace with EmailJS Service ID
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,    // 🔹 Replace with EmailJS Template ID
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         form,
-        process.env.REACT_APP_EMAILJS_PUBLIC_KEY      // 🔹 Replace with EmailJS Public Key
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       )
       .then(
-        (result) => {
-          console.log("Message sent:", result.text);
-          alert("✅ Message sent successfully!");
+        () => {
+          setIsSending(false);
+          setIsSent(true);
           form.reset();
+          showToast("✅ Message sent successfully!", "success");
+          setTimeout(() => setIsSent(false), 3000); // Reset after 3s
         },
-        (error) => {
-          console.error("Error:", error.text);
-          alert("❌ Failed to send message. Please try again.");
+        () => {
+          setIsSending(false);
+          showToast("❌ Failed to send message", "error");
         }
       );
-  }
+  };
 
   return (
     <section id="contact" className="py-20 bg-section-bg">
@@ -168,6 +187,7 @@ const Contact = () => {
                       id="name"
                       name="user_name"
                       placeholder="Your name"
+                      re
                       className="bg-background/50 border-border focus:border-accent focus:ring-1 focus:ring-accent rounded-md"
                     />
                   </div>
@@ -217,11 +237,34 @@ const Contact = () => {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full mt-4 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold glow-effect rounded-md"
+                    disabled={isSending}
+                    className={`w-full mt-4 font-semibold rounded-md glow-effect relative overflow-hidden transition-all duration-300
+    ${isSending
+                        ? "bg-blue-500 text-white"
+                        : "bg-accent text-accent-foreground hover:bg-accent/90"}
+  `}
                   >
-                    <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                    {!isSending && !isSent && (
+                      <span className="flex items-center justify-center">
+                        <Send className="mr-2 h-5 w-5" />
+                        Send Message
+                      </span>
+                    )}
+
+                    {isSending && (
+                      <span className="flex items-center justify-center gap-2">
+                        <Send className="h-5 w-5 animate-fly" />
+                        Sending...
+                      </span>
+                    )}
+
+                    {isSent && (
+                      <span className="flex items-center justify-center text-green-700">
+                        ✅ Sent!
+                      </span>
+                    )}
                   </Button>
+
                 </div>
               </form>
 

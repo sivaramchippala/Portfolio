@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
+import { ToastProvider } from './components/ui/CustomToast';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-     {/* <MyContext.Provider value={contextValue}>
-     <App />
-    </MyContext.Provider> */}
-   <App />
+    <ToastProvider >
+      <App />
+    </ToastProvider>
   </React.StrictMode>
 );
 
