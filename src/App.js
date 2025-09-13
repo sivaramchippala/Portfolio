@@ -5,6 +5,7 @@ import Hero from "./components/portfolio/Hero"
 import Navigation from "./components/portfolio/Navigation"
 import Projects from "./components/portfolio/Projects"
 import Skills from "./components/portfolio/Skills"
+import ChatbaseWidget from "./components/ui/ChatbaseWidget"
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <Experience />
       <Projects />
       <Contact />
+     <ChatbaseWidget />
     </div>
   )
 }
