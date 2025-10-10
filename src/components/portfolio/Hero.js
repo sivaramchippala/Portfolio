@@ -79,7 +79,7 @@ const Hero = () => {
                 className="border-accent text-accent hover:bg-accent hover:text-accent-foreground flex items-center"
                 onClick={() =>
                   window.open(
-                    "https://www.instagram.com/ram__for__you__?igsh=MWs4MHZ4NzExdjI0aA==",
+                    "https://www.instagram.com/ramai.world?igsh=em1laDAxbzlsaTF6",
                     "_blank"
                   )
                 }

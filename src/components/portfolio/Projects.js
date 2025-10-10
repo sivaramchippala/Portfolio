@@ -1,6 +1,7 @@
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
-import { ExternalLink, Github, Server, Database, Cloud, FileText, Badge } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "../ui/Tabs";
+import { ExternalLink, Github, Server, Database, Cloud, FileText, Badge, PhoneCall, FolderOpen, LayoutDashboard, User } from "lucide-react";
 
 const Projects = () => {
   const projects = [
@@ -48,7 +49,66 @@ const Projects = () => {
         "Real-time PDF processing with preview, redaction, and cloud storage"
       ],
       color: "purple-400"
-    }
+    },
+    {
+      title: "AWS Connect – Shark Unlock Call Management",
+      description: "Cloud-based customer support automation system for managing lockout, calibration, billing, and removal requests with Zoho Desk integration.",
+      icon: <PhoneCall className="h-8 w-8" />,
+      technologies: ["AWS Connect", "AWS Lambda", "Zoho Desk", "REST APIs"],
+      features: [
+        "User verification via AWS Connect workflows with fallback options for alternate numbers or new registration",
+        "Automated IVR flows with Zoho Desk ticketing and AWS Lambda–based multi-language support"
+      ],
+      color: "teal-400"
+    },
+    {
+      title: "File Manager – S3 Bucket Management App",
+      description: "React-based file manager with secure S3 integration for uploading, organizing, and managing documents in the cloud.",
+      icon: <FolderOpen className="h-8 w-8" />,
+      technologies: ["React.js", "AWS S3", "AWS Cognito", "REST APIs", "HTML", "CSS", "JavaScript", "Git/GitHub"],
+      features: [
+        "Drag-and-drop file management with AWS S3 integration for full CRUD operations",
+        "Secure authentication with AWS Cognito and role-based access logging"
+      ],
+      color: "blue-500"
+    },
+
+
+  ];
+  const ownProjects = [
+    {
+      title: "Customer Dashboard with Telegram Bot Integration",
+      description: "Interactive React dashboard integrated with Telegram chatbot and Google Sheets automation for managing customer data and communications.",
+      icon: <LayoutDashboard className="h-8 w-8" />,
+      technologies: ["React.js", "Telegram Bot API", "n8n", "Google Sheets", "Gmail API"],
+      features: [
+        "Real-time customer updates through Telegram bot with two-way communication synced to dashboard UI",
+        "Automated data management and notifications with Google Sheets + Gmail integration"
+      ],
+      color: "emerald-400"
+    },
+    {
+      title: "Automated Talent Screening (ATS) System",
+      description: "An end-to-end React & n8n workflow for candidate application processing, AI-powered resume analysis, and automated HR notifications.",
+      icon: <User className="h-8 w-8" />,
+      technologies: ["React.js", "n8n", "Google Gemini AI", "Google Sheets", "Gmail API", "PDF Processing"],
+      features: [
+        "AI-powered resume analysis with compatibility scoring, ATS score, and automated recommendation",
+        "Automated candidate and HR notifications via Gmail, with data tracked in Google Sheets"
+      ],
+      color: "cyan-400"
+    },
+    {
+  title: "TextBin – Secure Text Sharing Platform",
+  description: "A React-based platform for quickly sharing and retrieving text snippets using unique share codes, with backend storage on MongoDB and deployment via AWS Amplify, designed for developers and teams to collaborate securely.",
+  icon: <FileText className="h-8 w-8" />,
+  technologies: ["React.js", "CSS", "REST API", "MongoDB", "AWS Amplify", "Git"],
+  features: [
+    "Share text securely with unique, auto-generated codes stored in MongoDB for persistent access",
+    "Retrieve shared text using a code, copy to clipboard, and manage multiple entries efficiently with real-time updates"
+  ],
+  color: "violet-400"
+}
   ];
 
   const academicProjects = [
@@ -86,56 +146,63 @@ const Projects = () => {
             A showcase of my professional and academic projects demonstrating technical expertise
           </p>
         </div>
+        {/* Tabs */}
+        <Tabs defaultValue="professional" className="w-full">
+          <TabsList className="flex justify-center mb-10">
+            <TabsTrigger value="professional">Professional Projects</TabsTrigger>
+            <TabsTrigger value="own">Own Projects</TabsTrigger>
+          </TabsList>
 
-        {/* Professional Projects */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-bold mb-8 text-center text-accent">Professional Projects</h3>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <Card
-                key={project.title}
-                className="card-gradient p-8 border-border/50 card-hover animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex items-start gap-4 mb-6">
-                  <div className={`p-3 rounded-lg ${getColorClasses(project.color)} flex-shrink-0`}>
-                    {project.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold mb-2 text-accent">{project.title}</h4>
-                    <p className="text-muted-foreground leading-relaxed">{project.description}</p>
-                  </div>
-                </div>
+          {/* Professional Projects */}
+          <TabsContent value="professional">
+            <div className="mb-20">
+              <h3 className="text-2xl font-bold mb-8 text-center text-accent">Professional Projects</h3>
+              <div className="grid lg:grid-cols-2 gap-8">
+                {projects.map((project, index) => (
+                  <Card
+                    key={project.title}
+                    className="card-gradient p-8 border-border/50 card-hover animate-slide-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className={`p-3 rounded-lg ${getColorClasses(project.color)} flex-shrink-0`}>
+                        {project.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold mb-2 text-accent">{project.title}</h4>
+                        <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                      </div>
+                    </div>
 
-                <div className="mb-6">
-                  <h5 className="font-semibold mb-3">Key Features:</h5>
-                  <ul className="space-y-2">
-                    {project.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-muted-foreground text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                    <div className="mb-6">
+                      <h5 className="font-semibold mb-3">Key Features:</h5>
+                      <ul className="space-y-2">
+                        {project.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-muted-foreground text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                <div className="mb-6">
-                  <h5 className="font-semibold mb-3">Technologies:</h5>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="inline-block bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1 text-sm font-medium hover:bg-blue-100 transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                    <div className="mb-6">
+                      <h5 className="font-semibold mb-3">Technologies:</h5>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="inline-block bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1 text-sm font-medium hover:bg-blue-100 transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
 
-                </div>
+                    </div>
 
-                <div className="flex gap-3">
-                  {/* <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                    <div className="flex gap-3">
+                      {/* <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
                     <ExternalLink className="mr-2 h-4 w-4" />
                     View Details
                   </Button>
@@ -143,12 +210,65 @@ const Projects = () => {
                     <Github className="mr-2 h-4 w-4" />
                     Code
                   </Button> */}
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </TabsContent>
+          {/* Own Projects */}
+          <TabsContent value="own">
+            <div className="mb-20">
+              <h3 className="text-2xl font-bold mb-8 text-center text-accent">Own Projects</h3>
+              <div className="grid lg:grid-cols-2 gap-8">
+                {ownProjects.map((project, index) => (
+                  <Card
+                    key={project.title}
+                    className="card-gradient p-8 border-border/50 card-hover animate-slide-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className={`p-3 rounded-lg ${getColorClasses(project.color)} flex-shrink-0`}>
+                        {project.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold mb-2 text-accent">{project.title}</h4>
+                        <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                      </div>
+                    </div>
 
+                    <div className="mb-6">
+                      <h5 className="font-semibold mb-3">Key Features:</h5>
+                      <ul className="space-y-2">
+                        {project.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-muted-foreground text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mb-6">
+                      <h5 className="font-semibold mb-3">Technologies:</h5>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="inline-block bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1 text-sm font-medium hover:bg-blue-100 transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </TabsContent>
+
+        </Tabs>
         {/* Academic Projects */}
         <div>
           <h3 className="text-2xl font-bold mb-8 text-center text-accent">Academic Projects</h3>

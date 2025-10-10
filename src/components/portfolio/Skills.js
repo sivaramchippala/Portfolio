@@ -12,17 +12,17 @@ const Skills = () => {
     },
     {
       title: "Backend & Database",
-      skills: ["Node.js", "MongoDB", "SQL Server", "RESTful APIs", "AXIOS", "API Integration"],
+      skills: ["Node.js", "MongoDB", "RESTful APIs", "AXIOS", "API Integration"],
       color: "bg-emerald-500/10 text-emerald-600 border-emerald-400/40"
     },
     {
       title: "Cloud & DevOps",
-      skills: ["AWS Lambda", "AWS S3", "AWS Cognito", "DynamoDB", "IAM Roles", "API Gateway", "CloudWatch", "EventBridge","AWS Connect"],
+      skills: ["AWS Lambda", "AWS S3", "AWS Cognito", "DynamoDB", "IAM Roles", "API Gateway", "CloudWatch", "EventBridge","AWS Connect","AWS LEX"],
       color: "bg-orange-400/20 text-orange-400 border-orange-400/30"
     },
     {
       title: "Tools & Technologies",
-      skills: ["Git/GitHub", "Bitbucket", "Visual Studio Code", "Postman", "Jira", "TypeScript"],
+      skills: ["Git/GitHub","GitLab", "Visual Studio Code", "Postman", "TypeScript"],
       color: "bg-green-400/20 text-green-400 border-green-400/30"
     },
     {
@@ -32,7 +32,7 @@ const Skills = () => {
     },
     {
       title: "Programming Languages",
-      skills: ["JavaScript", "Python", "C#", "Java", "SQL"],
+      skills: ["JavaScript","HTML","CSS", "SQL"],
       color: "bg-red-400/20 text-red-400 border-red-400/30"
     }
   ];
