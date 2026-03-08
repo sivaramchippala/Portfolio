@@ -1,7 +1,7 @@
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../ui/Tabs";
-import { ExternalLink, Github, Server, Database, Cloud, FileText, Badge, PhoneCall, FolderOpen, LayoutDashboard, User } from "lucide-react";
+import { ExternalLink, Github, Server, Database, Cloud, FileText, Badge, PhoneCall, FolderOpen, LayoutDashboard, User, Notebook, NotebookPen } from "lucide-react";
 
 const Projects = () => {
   const projects = [
@@ -99,16 +99,26 @@ const Projects = () => {
       color: "cyan-400"
     },
     {
-  title: "TextBin – Secure Text Sharing Platform",
-  description: "A React-based platform for quickly sharing and retrieving text snippets using unique share codes, with backend storage on MongoDB and deployment via AWS Amplify, designed for developers and teams to collaborate securely.",
-  icon: <FileText className="h-8 w-8" />,
-  technologies: ["React.js", "CSS", "REST API", "MongoDB", "AWS Amplify", "Git"],
-  features: [
-    "Share text securely with unique, auto-generated codes stored in MongoDB for persistent access",
-    "Retrieve shared text using a code, copy to clipboard, and manage multiple entries efficiently with real-time updates"
-  ],
-  color: "violet-400"
-}
+      title: "TextBin – Secure Text Sharing Platform",
+      description: "A React-based platform for quickly sharing and retrieving text snippets using unique share codes, with backend storage on MongoDB and deployment via AWS Amplify, designed for developers and teams to collaborate securely.",
+      icon: <FileText className="h-8 w-8" />,
+      technologies: ["React.js", "CSS", "REST API", "MongoDB", "AWS Amplify", "Git"],
+      features: [
+        "Share text securely with unique, auto-generated codes stored in MongoDB for persistent access",
+        "Retrieve shared text using a code, copy to clipboard, and manage multiple entries efficiently with real-time updates"
+      ],
+      color: "violet-400"
+    }, {
+      title: "RAM's NOTES – AI Friendly Cloud Notes App",
+      description: "A modern cloud-based note taking application designed for developers and writers to capture ideas, code snippets, and AI-generated content. Users can directly copy and paste responses from AI tools like ChatGPT and the content renders cleanly with proper formatting instead of plain text.",
+      icon: <NotebookPen className="h-8 w-8" />,
+      technologies: ["React.js", "Google Drive API", "Google Cloud", "Rich Text Editor", "REST API", "Cloud Storage"],
+      features: [
+        "AI-friendly editor that allows direct copy-paste from ChatGPT and other AI tools while preserving formatting",
+        "Automatic cloud storage and retrieval of notes using Google Drive API for secure backup and access across devices"
+      ],
+      color: "amber-400"
+    }
   ];
 
   const academicProjects = [
